@@ -72,4 +72,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 		throw new EmployeeWithTheIDNotPresentException();
 	}
 
+	@Override
+	public List<Employee> getEmployeesByDesignation(String designation) {
+		// TODO Auto-generated method stub
+		return empRepo.findByDesignation(designation);
+	}
+
 }

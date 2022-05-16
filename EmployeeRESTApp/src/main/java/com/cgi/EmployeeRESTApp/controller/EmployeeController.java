@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cgi.EmployeeRESTApp.exceptions.EmployeeWithTheIDAlreadyPresentException;
@@ -84,6 +85,14 @@ public class EmployeeController {
 		} catch(EmployeeWithTheIDNotPresentException e) {
 			respEnt = new ResponseEntity<String>("Failed to find the employee with that ID", HttpStatus.NOT_FOUND);
 		}
+		return respEnt;
+	}
+	
+	@GetMapping("/employees/designation")
+	public ResponseEntity<?> getAllEmployeesByDesignation(@RequestParam("role") String designation){
+		ResponseEntity<?> respEnt;
+		List<Employee> employees = employeeService.getEmployeesByDesignation(designation);
+		respEnt = new ResponseEntity<List<Employee>>(employees, HttpStatus.OK);
 		return respEnt;
 	}
 

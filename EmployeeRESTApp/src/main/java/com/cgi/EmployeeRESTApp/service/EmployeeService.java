@@ -14,4 +14,6 @@ public interface EmployeeService {
 	Employee addNewEmployee(Employee emp) throws EmployeeWithTheIDAlreadyPresentException;
 	void deleteEmployee(int id) throws EmployeeWithTheIDNotPresentException;
 	Employee updateEmployee(Employee emp) throws EmployeeWithTheIDNotPresentException;
+	List<Employee> getEmployeesByDesignation(String designation);
+	
 }
